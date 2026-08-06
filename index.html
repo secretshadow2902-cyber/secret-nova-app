@@ -1,1 +1,41 @@
-https://ibb.co/WvPqm3gp
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Nova</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #050714; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .app-wrapper { position: relative; width: 100%; max-width: 420px; overflow: hidden; }
+        .bg-image { width: 100%; display: block; }
+        .click-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-box { background: #0d102b; border: 1px solid #7000ff; padding: 20px; border-radius: 16px; text-align: center; color: #fff; width: 80%; max-width: 280px; font-family: sans-serif; }
+        .modal-box h3 { color: #00d2ff; margin-bottom: 8px; }
+        .modal-box p { font-size: 14px; margin-bottom: 15px; color: #ccc; }
+        .close-btn { background: linear-gradient(90deg, #6366f1, #a855f7); color: #fff; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <img src="YOUR_IMAGE_URL_HERE" class="bg-image" alt="Secret Nova UI">
+    <div class="click-overlay" onclick="showModal()"></div>
+</div>
+
+<div class="modal" id="comingSoonModal">
+    <div class="modal-box">
+        <h3>SECRET NOVA</h3>
+        <p>This feature is <b>Coming Soon!</b> 🚀</p>
+        <button class="close-btn" onclick="hideModal()">OK</button>
+    </div>
+</div>
+
+<script>
+    function showModal() { document.getElementById('comingSoonModal').style.display = 'flex'; }
+    function hideModal() { document.getElementById('comingSoonModal').style.display = 'none'; }
+</script>
+
+</body>
+</html>
