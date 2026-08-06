@@ -3,152 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secret Nova Dashboard</title>
+    <title>Secret Nova Mini App</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background-color: #03040b; color: #ffffff; font-family: 'Inter', sans-serif; }
-        .neon-border { border: 1px solid #1e1b4b; box-shadow: 0 0 15px rgba(99, 102, 241, 0.15); }
-        .neon-card { background: linear-gradient(180deg, #0d0e26 0%, #070818 100%); }
-        .purple-glow { box-shadow: 0 0 25px rgba(112, 0, 255, 0.4); }
-        .btn-gradient { background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%); }
+        body { background-color: #050714; color: #fff; font-family: sans-serif; overflow-x: hidden; }
+        .glass-card { background: rgba(16, 20, 48, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(82, 93, 160, 0.2); }
+        .purple-neon { box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); border: 1px solid rgba(139, 92, 246, 0.4); }
+        .cyan-glow { text-shadow: 0 0 8px rgba(6, 182, 212, 0.6); }
+        .gradient-btn { background: linear-gradient(90deg, #6366f1, #a855f7); }
     </style>
 </head>
-<body class="p-2 sm:p-4 min-h-screen pb-20">
+<body class="p-3 max-w-[480px] mx-auto pb-20">
 
-    <!-- Top Navigation Bar -->
-    <div class="flex justify-between items-center bg-[#0a0b1e] p-3 rounded-2xl neon-border mb-4">
+    <!-- Top Navigation -->
+    <div class="glass-card p-3 rounded-2xl flex justify-between items-center mb-3">
         <div class="flex items-center gap-2">
-            <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center font-black text-xl text-white shadow-[0_0_15px_#4f46e5]">SN</div>
-            <div>
-                <h1 class="font-bold text-sm tracking-wide">SECRET NOVA</h1>
-                <p class="text-[10px] text-indigo-400">シークレット・ノヴァ</p>
-            </div>
+            <div class="w-9 h-9 rounded-xl gradient-btn flex items-center justify-center font-black text-sm shadow-[0_0_10px_#6366f1]">SN</div>
+            <span class="font-bold text-sm tracking-wide cyan-glow">SECRET NOVA</span>
         </div>
-        <div class="flex gap-2 text-xs">
-            <div class="bg-[#121436] px-3 py-1.5 rounded-full border border-indigo-900/50 flex items-center gap-1.5">
-                <span class="text-amber-400">🪙</span> <span class="font-bold">12,450</span>
+        <div class="flex gap-2">
+            <div class="bg-[#0e1330] px-2.5 py-1 rounded-full border border-indigo-900/50 text-xs flex items-center gap-1">
+                <span class="text-amber-400">🪙</span> <span class="font-bold">12.4K</span>
             </div>
-            <div class="bg-[#121436] px-3 py-1.5 rounded-full border border-indigo-900/50 flex items-center gap-1.5">
+            <div class="bg-[#0e1330] px-2.5 py-1 rounded-full border border-indigo-900/50 text-xs flex items-center gap-1">
                 <span class="text-cyan-400">💎</span> <span class="font-bold">860</span>
             </div>
         </div>
     </div>
 
     <!-- Daily Reward Hero Card -->
-    <div class="relative overflow-hidden rounded-2xl p-5 mb-4 neon-border bg-gradient-to-r from-indigo-950 via-purple-950 to-slate-950 purple-glow">
-        <div class="relative z-10 max-w-[65%]">
-            <span class="text-[10px] uppercase tracking-wider font-bold text-indigo-400 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-800">Streak 07 Days</span>
-            <h2 class="text-lg font-black mt-2 text-white">DAILY REWARD</h2>
-            <p class="text-xs text-indigo-200 mt-1 mb-3">Login everyday and claim amazing rewards!</p>
-            <button class="lock-btn btn-gradient text-white text-xs font-bold px-4 py-2 rounded-xl shadow-lg active:scale-95 transition">Claim Now 🎁</button>
-        </div>
-        <div class="absolute right-2 bottom-2 text-6xl opacity-80 filter drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">🎁</div>
+    <div class="purple-neon bg-gradient-to-r from-indigo-950 via-purple-900 to-indigo-950 p-4 rounded-2xl relative overflow-hidden mb-3">
+        <span class="text-[9px] uppercase font-bold text-indigo-300 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-700">Streak 07 Days</span>
+        <h2 class="text-base font-black mt-1">DAILY REWARD</h2>
+        <p class="text-[11px] text-indigo-200 mb-3">Login everyday and claim amazing rewards!</p>
+        <button class="lock-btn gradient-btn text-xs font-bold px-4 py-1.5 rounded-xl shadow-lg active:scale-95 transition">Claim Now 🎁</button>
+        <div class="absolute right-2 bottom-1 text-5xl opacity-80">🎁</div>
     </div>
 
-    <!-- Quick Action Grid -->
-    <div class="grid grid-cols-5 gap-2 mb-4 text-center">
-        <div class="lock-btn neon-card p-2.5 rounded-xl neon-border cursor-pointer hover:border-indigo-500 transition">
-            <div class="text-lg mb-1">🎁</div>
-            <p class="text-[10px] text-gray-400 font-medium">Bonus</p>
+    <!-- Quick Actions Row -->
+    <div class="grid grid-cols-5 gap-1.5 mb-3 text-center">
+        <div class="lock-btn glass-card p-2 rounded-xl cursor-pointer">
+            <div class="text-base">🎁</div>
+            <p class="text-[9px] text-gray-400 font-medium mt-0.5">Bonus</p>
         </div>
-        <div class="lock-btn neon-card p-2.5 rounded-xl neon-border cursor-pointer hover:border-indigo-500 transition">
-            <div class="text-lg mb-1">🎯</div>
-            <p class="text-[10px] text-gray-400 font-medium">Tasks</p>
+        <div class="lock-btn glass-card p-2 rounded-xl cursor-pointer">
+            <div class="text-base">🎯</div>
+            <p class="text-[9px] text-gray-400 font-medium mt-0.5">Tasks</p>
         </div>
-        <div class="lock-btn neon-card p-2.5 rounded-xl neon-border cursor-pointer hover:border-indigo-500 transition">
-            <div class="text-lg mb-1">🎡</div>
-            <p class="text-[10px] text-gray-400 font-medium">Lucky Spin</p>
+        <div class="lock-btn glass-card p-2 rounded-xl cursor-pointer">
+            <div class="text-base">🎡</div>
+            <p class="text-[9px] text-gray-400 font-medium mt-0.5">Spin</p>
         </div>
-        <div class="lock-btn neon-card p-2.5 rounded-xl neon-border cursor-pointer hover:border-indigo-500 transition">
-            <div class="text-lg mb-1">📅</div>
-            <p class="text-[10px] text-gray-400 font-medium">Events</p>
+        <div class="lock-btn glass-card p-2 rounded-xl cursor-pointer">
+            <div class="text-base">📅</div>
+            <p class="text-[9px] text-gray-400 font-medium mt-0.5">Events</p>
         </div>
-        <div class="lock-btn neon-card p-2.5 rounded-xl neon-border cursor-pointer hover:border-indigo-500 transition">
-            <div class="text-lg mb-1">🎬</div>
-            <p class="text-[10px] text-gray-400 font-medium">Watch</p>
+        <div class="lock-btn glass-card p-2 rounded-xl cursor-pointer">
+            <div class="text-base">🎬</div>
+            <p class="text-[9px] text-gray-400 font-medium mt-0.5">Watch</p>
         </div>
     </div>
 
-    <!-- Voice Chat Beta Box -->
-    <div class="neon-card p-3 rounded-2xl neon-border mb-4 flex items-center justify-between">
-        <div>
-            <div class="flex items-center gap-2">
-                <h3 class="text-xs font-bold text-white">VOICE CHAT</h3>
-                <span class="text-[9px] bg-emerald-950 text-emerald-400 font-bold px-1.5 py-0.5 rounded border border-emerald-800">BETA</span>
-            </div>
-            <p class="text-[10px] text-gray-400 mt-0.5">Tap to start voice chat with friends</p>
-        </div>
-        <button class="lock-btn w-10 h-10 rounded-full btn-gradient flex items-center justify-center text-white shadow-lg active:scale-95">
-            <i class="fa-solid fa-microphone text-sm"></i>
-        </button>
-    </div>
-
-    <!-- Trending Games Section -->
+    <!-- Trending Games Grid -->
     <div class="flex justify-between items-center mb-2 px-1">
         <h3 class="text-xs font-bold tracking-wider text-indigo-300">🔥 TRENDING GAMES</h3>
-        <span class="text-[10px] text-gray-500">View All</span>
     </div>
 
-    <div class="grid grid-cols-3 gap-2 mb-4">
-        <!-- Ludo -->
-        <div class="neon-card p-2 rounded-xl neon-border text-center flex flex-col justify-between">
-            <div class="h-16 bg-indigo-950/40 rounded-lg flex items-center justify-center text-2xl mb-2 border border-indigo-900/30">🎲</div>
-            <div>
-                <h4 class="text-xs font-bold text-white">Ludo</h4>
-                <p class="text-[9px] text-gray-500 mb-2">2.3K Playing</p>
-            </div>
-            <button class="lock-btn btn-gradient text-[10px] font-bold py-1.5 rounded-lg text-white w-full">Play Now</button>
+    <div class="grid grid-cols-3 gap-2 mb-3">
+        <div class="lock-btn glass-card p-2 rounded-xl text-center flex flex-col justify-between">
+            <div class="h-14 bg-indigo-950/50 rounded-lg flex items-center justify-center text-xl mb-1 border border-indigo-900/40">🎲</div>
+            <h4 class="text-xs font-bold">Ludo</h4>
+            <p class="text-[8px] text-gray-400 mb-1.5">2.3K Playing</p>
+            <button class="gradient-btn text-[9px] font-bold py-1 rounded-lg w-full">Play Now</button>
         </div>
-
-        <!-- Tic Tac Toe -->
-        <div class="neon-card p-2 rounded-xl neon-border text-center flex flex-col justify-between">
-            <div class="h-16 bg-indigo-950/40 rounded-lg flex items-center justify-center text-2xl mb-2 border border-indigo-900/30">❌⭕</div>
-            <div>
-                <h4 class="text-xs font-bold text-white">Tic Tac Toe</h4>
-                <p class="text-[9px] text-gray-500 mb-2">1.8K Playing</p>
-            </div>
-            <button class="lock-btn btn-gradient text-[10px] font-bold py-1.5 rounded-lg text-white w-full">Play Now</button>
+        <div class="lock-btn glass-card p-2 rounded-xl text-center flex flex-col justify-between">
+            <div class="h-14 bg-indigo-950/50 rounded-lg flex items-center justify-center text-xl mb-1 border border-indigo-900/40">❌⭕</div>
+            <h4 class="text-xs font-bold">Tic Tac Toe</h4>
+            <p class="text-[8px] text-gray-400 mb-1.5">1.8K Playing</p>
+            <button class="gradient-btn text-[9px] font-bold py-1 rounded-lg w-full">Play Now</button>
         </div>
-
-        <!-- Snake -->
-        <div class="neon-card p-2 rounded-xl neon-border text-center flex flex-col justify-between">
-            <div class="h-16 bg-indigo-950/40 rounded-lg flex items-center justify-center text-2xl mb-2 border border-indigo-900/30">🐍</div>
-            <div>
-                <h4 class="text-xs font-bold text-white">Snake</h4>
-                <p class="text-[9px] text-gray-500 mb-2">1.2K Playing</p>
-            </div>
-            <button class="lock-btn btn-gradient text-[10px] font-bold py-1.5 rounded-lg text-white w-full">Play Now</button>
+        <div class="lock-btn glass-card p-2 rounded-xl text-center flex flex-col justify-between">
+            <div class="h-14 bg-indigo-950/50 rounded-lg flex items-center justify-center text-xl mb-1 border border-indigo-900/40">🐍</div>
+            <h4 class="text-xs font-bold">Snake</h4>
+            <p class="text-[8px] text-gray-400 mb-1.5">1.2K Playing</p>
+            <button class="gradient-btn text-[9px] font-bold py-1 rounded-lg w-full">Play Now</button>
         </div>
     </div>
 
-    <!-- Bottom Navigation Bar -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#050612] border-t border-indigo-950 p-2 flex justify-around items-center z-50">
+    <!-- Bottom Fixed Menu -->
+    <div class="fixed bottom-0 left-0 right-0 bg-[#04050e] border-t border-indigo-950 p-2 flex justify-around items-center z-50 max-w-[480px] mx-auto">
         <div class="text-center text-indigo-400 cursor-pointer">
-            <i class="fa-solid fa-house text-sm"></i>
-            <p class="text-[9px] font-bold mt-0.5">Home</p>
+            <i class="fa-solid fa-house text-xs"></i>
+            <p class="text-[8px] font-bold mt-0.5">Home</p>
         </div>
-        <div class="lock-btn text-center text-gray-600 cursor-pointer">
-            <i class="fa-solid fa-gamepad text-sm"></i>
-            <p class="text-[9px] mt-0.5">Games</p>
+        <div class="lock-btn text-center text-gray-500 cursor-pointer">
+            <i class="fa-solid fa-gamepad text-xs"></i>
+            <p class="text-[8px] mt-0.5">Games</p>
         </div>
-        <div class="lock-btn text-center text-gray-600 cursor-pointer">
-            <i class="fa-solid fa-trophy text-sm"></i>
-            <p class="text-[9px] mt-0.5">Rank</p>
+        <div class="lock-btn text-center text-gray-500 cursor-pointer">
+            <i class="fa-solid fa-trophy text-xs"></i>
+            <p class="text-[8px] mt-0.5">Rank</p>
         </div>
-        <div class="lock-btn text-center text-gray-600 cursor-pointer">
-            <i class="fa-solid fa-user text-sm"></i>
-            <p class="text-[9px] mt-0.5">Profile</p>
+        <div class="lock-btn text-center text-gray-500 cursor-pointer">
+            <i class="fa-solid fa-user text-xs"></i>
+            <p class="text-[8px] mt-0.5">Profile</p>
         </div>
     </div>
 
-    <!-- Modal Popup for Lock -->
+    <!-- Modal Popup -->
     <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
-        <div class="neon-card p-5 rounded-2xl neon-border max-w-xs w-full text-center purple-glow border-indigo-500">
-            <div class="w-12 h-12 bg-indigo-950 rounded-full flex items-center justify-center text-2xl mx-auto mb-3 border border-indigo-500 text-indigo-400">🚀</div>
-            <h3 class="text-base font-bold text-white mb-1">SECRET NOVA</h3>
-            <p class="text-xs text-gray-400 mb-4">This feature is <span class="text-indigo-400 font-bold">Coming Soon!</span></p>
-            <button onclick="closeModal()" class="btn-gradient text-white text-xs font-bold px-6 py-2 rounded-xl w-full">OK</button>
+        <div class="glass-card p-5 rounded-2xl max-w-xs w-full text-center purple-neon">
+            <h3 class="text-sm font-bold cyan-glow mb-1">SECRET NOVA</h3>
+            <p class="text-xs text-gray-300 mb-4">This feature is <span class="text-indigo-400 font-bold">Coming Soon!</span> 🚀</p>
+            <button onclick="closeModal()" class="gradient-btn text-xs font-bold px-5 py-1.5 rounded-xl w-full">OK</button>
         </div>
     </div>
 
@@ -168,5 +136,3 @@
     </script>
 </body>
 </html>
-
-
