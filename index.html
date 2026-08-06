@@ -3,144 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secret Nova</title>
+    <title>Secret Nova Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg-dark: #090a16;
-            --card-bg: #11142d;
-            --accent-purple: #7000ff;
-            --accent-cyan: #00d2ff;
-            --text-main: #ffffff;
-            --text-muted: #8b8ea8;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); display: flex; justify-content: center; min-height: 100vh; }
-        .app-container { width: 100%; max-width: 480px; background: #0c0f24; padding: 15px; display: flex; flex-direction: column; gap: 15px; padding-bottom: 80px; }
-        
-        /* Header */
-        .header { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); padding: 10px 15px; border-radius: 12px; border: 1px solid #1f244d; }
-        .logo-title { font-weight: bold; color: #fff; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
-        .logo-title span { color: var(--accent-cyan); }
-        .user-stats { display: flex; gap: 10px; font-size: 0.85rem; }
-        .stat-badge { background: #1a1e43; padding: 4px 8px; border-radius: 20px; border: 1px solid #2d3466; display: flex; align-items: center; gap: 4px; }
-
-        /* Hero Banner */
-        .banner { background: linear-gradient(135deg, #4a00e0, #8e2de2); border-radius: 16px; padding: 15px; position: relative; overflow: hidden; }
-        .banner h2 { font-size: 1.2rem; margin-bottom: 5px; }
-        .banner p { font-size: 0.8rem; opacity: 0.9; margin-bottom: 12px; }
-        .claim-btn { background: #fff; color: #000; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; }
-
-        /* Quick Action Icons */
-        .quick-actions { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; text-align: center; }
-        .action-item { background: var(--card-bg); padding: 10px 5px; border-radius: 12px; border: 1px solid #1f244d; cursor: pointer; }
-        .action-item p { font-size: 0.65rem; margin-top: 5px; color: var(--text-muted); }
-
-        /* Section Titles */
-        .section-title { font-size: 1rem; font-weight: bold; margin: 5px 0; display: flex; justify-content: space-between; }
-
-        /* Games Grid */
-        .games-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .game-card { background: var(--card-bg); border-radius: 12px; padding: 8px; border: 1px solid #1f244d; text-align: center; cursor: pointer; }
-        .game-thumb { width: 100%; height: 70px; background: #1c2145; border-radius: 8px; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-        .game-card h4 { font-size: 0.8rem; }
-        .game-card span { font-size: 0.65rem; color: var(--text-muted); }
-        .play-btn { background: var(--accent-purple); color: #fff; border: none; width: 100%; padding: 4px; border-radius: 6px; margin-top: 6px; font-size: 0.7rem; font-weight: bold; }
-
-        /* Bottom Nav */
-        .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: #080a18; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #1f244d; }
-        .nav-item { color: var(--text-muted); text-align: center; font-size: 0.75rem; text-decoration: none; cursor: pointer; }
-        .nav-item.active { color: var(--accent-cyan); font-weight: bold; }
-
-        /* Popup Modal */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: var(--card-bg); padding: 20px; border-radius: 16px; text-align: center; border: 1px solid var(--accent-purple); width: 80%; max-width: 300px; }
-        .modal-content h3 { color: var(--accent-cyan); margin-bottom: 8px; }
-        .close-btn { background: var(--accent-purple); color: white; border: none; padding: 8px 16px; border-radius: 8px; margin-top: 12px; cursor: pointer; }
+        body { background-color: #03040b; color: #ffffff; font-family: 'Inter', sans-serif; }
+        .neon-border { border: 1px solid #1e1b4b; box-shadow: 0 0 15px rgba(99, 102, 241, 0.15); }
+        .neon-card { background: linear-gradient(180deg, #0d0e26 0%, #070818 100%); }
+        .purple-glow { box-shadow: 0 0 25px rgba(112, 0, 255, 0.4); }
+        .btn-gradient { background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%); }
     </style>
 </head>
-<body>
+<body class="p-2 sm:p-4 min-h-screen pb-20">
 
-<div class="app-container">
-    <!-- Header -->
-    <div class="header">
-        <div class="logo-title"><span>SN</span> SECRET NOVA</div>
-        <div class="user-stats">
-            <div class="stat-badge">🟡 12.4K</div>
-            <div class="stat-badge">💎 860</div>
+    <!-- Top Navigation Bar -->
+    <div class="flex justify-between items-center bg-[#0a0b1e] p-3 rounded-2xl neon-border mb-4">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center font-black text-xl text-white shadow-[0_0_15px_#4f46e5]">SN</div>
+            <div>
+                <h1 class="font-bold text-sm tracking-wide">SECRET NOVA</h1>
+                <p class="text-[10px] text-indigo-400">シークレット・ノヴァ</p>
+            </div>
+        </div>
+        <div class="flex gap-2 text-xs">
+            <div class="bg-[#121436] px-3 py-1.5 rounded-full border border-indigo-900/50 flex items-center gap-1.5">
+                <span class="text-amber-400">🪙</span> <span class="font-bold">12,450</span>
+            </div>
+            <div class="bg-[#121436] px-3 py-1.5 rounded-full border border-indigo-900/50 flex items-center gap-1.5">
+                <span class="text-cyan-400">💎</span> <span class="font-bold">860</span>
+            </div>
         </div>
     </div>
 
-    <!-- Banner -->
-    <div class="banner">
-        <h2>DAILY REWARD</h2>
-        <p>Login everyday and claim amazing rewards!</p>
-        <button class="claim-btn locked-feature">Claim Now 🎁</button>
+    <!-- Daily Reward Hero Card -->
+    <div class="relative overflow-hidden rounded-2xl p-5 mb-4 neon-border bg-gradient-to-r from-indigo-950 via-purple-950 to-slate-950 purple-glow">
+        <div class="relative z-10 max-w-[65%]">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-indigo-400 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-800">Streak 07 Days</span>
+            <h2 class="text-lg font-black mt-2 text-white">DAILY REWARD</h2>
+            <p class="text-xs text-indigo-200 mt-1 mb-3">Login everyday and claim amazing rewards!</p>
+            <button class="lock-btn btn-gradient text-white text-xs font-bold px-4 py-2 rounded-xl shadow-lg active:scale-95 transition">Claim Now 🎁</button>
+        </div>
+        <div class="absolute right-2 bottom-2 text-6xl opacity-80 filter drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">🎁</div>
     </div>
 
-    <!-- Quick Actions -->
-    <div class="quick-actions">
-        <div class="action-item locked-feature">🎁<p>Bonus</p></div>
-        <div class="action-item locked-feature">🎯<p>Tasks</p></div>
-        <div class="action-item locked-feature">🎡<p>Spin</p></div>
-        <div class="action-item locked-feature">📅<p>Events</p></div>
-        <div class="action-item locked-feature">🎬<p>Watch</p></div>
-    </div>
-
-    <!-- Trending Games -->
-    <div class="section-title">Trending Games</div>
-    <div class="games-grid">
-        <div class="game-card locked-feature">
-            <div class="game-thumb">🎲</div>
-            <h4>Ludo</h4>
-            <span>2.3K Playing</span>
-            <button class="play-btn">Play Now</button>
+    <!-- Quick Action Grid -->
+    <div class="grid grid-cols-5 gap-2 mb-4 text-center">
+        <div class="lock-btn neon-card p-2.5 rounded-xl neon-border cursor-pointer hover:border-indigo-500 transition">
+            <div class="text-lg mb-1">🎁</div>
+            <p class="text-[10px] text-gray-400 font-medium">Bonus</p>
         </div>
-        <div class="game-card locked-feature">
-            <div class="game-thumb">❌</div>
-            <h4>Tic Tac Toe</h4>
-            <span>1.8K Playing</span>
-            <button class="play-btn">Play Now</button>
+        <div class="lock-btn neon-card p-2.5 rounded-xl neon-border cursor-pointer hover:border-indigo-500 transition">
+            <div class="text-lg mb-1">🎯</div>
+            <p class="text-[10px] text-gray-400 font-medium">Tasks</p>
         </div>
-        <div class="game-card locked-feature">
-            <div class="game-thumb">🐍</div>
-            <h4>Snake</h4>
-            <span>1.2K Playing</span>
-            <button class="play-btn">Play Now</button>
+        <div class="lock-btn neon-card p-2.5 rounded-xl neon-border cursor-pointer hover:border-indigo-500 transition">
+            <div class="text-lg mb-1">🎡</div>
+            <p class="text-[10px] text-gray-400 font-medium">Lucky Spin</p>
+        </div>
+        <div class="lock-btn neon-card p-2.5 rounded-xl neon-border cursor-pointer hover:border-indigo-500 transition">
+            <div class="text-lg mb-1">📅</div>
+            <p class="text-[10px] text-gray-400 font-medium">Events</p>
+        </div>
+        <div class="lock-btn neon-card p-2.5 rounded-xl neon-border cursor-pointer hover:border-indigo-500 transition">
+            <div class="text-lg mb-1">🎬</div>
+            <p class="text-[10px] text-gray-400 font-medium">Watch</p>
         </div>
     </div>
-</div>
 
-<!-- Bottom Navigation -->
-<div class="bottom-nav">
-    <div class="nav-item active">🏠<br>Home</div>
-    <div class="nav-item locked-feature">🎮<br>Games</div>
-    <div class="nav-item locked-feature">🏆<br>Rank</div>
-    <div class="nav-item locked-feature">👤<br>Profile</div>
-</div>
-
-<!-- Coming Soon Popup -->
-<div class="modal" id="comingSoonModal">
-    <div class="modal-content">
-        <h3>Secret Nova</h3>
-        <p>This feature is <b>Coming Soon!</b> 🚀</p>
-        <button class="close-btn" onclick="closeModal()">OK</button>
+    <!-- Voice Chat Beta Box -->
+    <div class="neon-card p-3 rounded-2xl neon-border mb-4 flex items-center justify-between">
+        <div>
+            <div class="flex items-center gap-2">
+                <h3 class="text-xs font-bold text-white">VOICE CHAT</h3>
+                <span class="text-[9px] bg-emerald-950 text-emerald-400 font-bold px-1.5 py-0.5 rounded border border-emerald-800">BETA</span>
+            </div>
+            <p class="text-[10px] text-gray-400 mt-0.5">Tap to start voice chat with friends</p>
+        </div>
+        <button class="lock-btn w-10 h-10 rounded-full btn-gradient flex items-center justify-center text-white shadow-lg active:scale-95">
+            <i class="fa-solid fa-microphone text-sm"></i>
+        </button>
     </div>
-</div>
 
-<script>
-    const modal = document.getElementById('comingSoonModal');
-    document.querySelectorAll('.locked-feature').forEach(item => {
-        item.addEventListener('click', () => {
-            modal.style.display = 'flex';
+    <!-- Trending Games Section -->
+    <div class="flex justify-between items-center mb-2 px-1">
+        <h3 class="text-xs font-bold tracking-wider text-indigo-300">🔥 TRENDING GAMES</h3>
+        <span class="text-[10px] text-gray-500">View All</span>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 mb-4">
+        <!-- Ludo -->
+        <div class="neon-card p-2 rounded-xl neon-border text-center flex flex-col justify-between">
+            <div class="h-16 bg-indigo-950/40 rounded-lg flex items-center justify-center text-2xl mb-2 border border-indigo-900/30">🎲</div>
+            <div>
+                <h4 class="text-xs font-bold text-white">Ludo</h4>
+                <p class="text-[9px] text-gray-500 mb-2">2.3K Playing</p>
+            </div>
+            <button class="lock-btn btn-gradient text-[10px] font-bold py-1.5 rounded-lg text-white w-full">Play Now</button>
+        </div>
+
+        <!-- Tic Tac Toe -->
+        <div class="neon-card p-2 rounded-xl neon-border text-center flex flex-col justify-between">
+            <div class="h-16 bg-indigo-950/40 rounded-lg flex items-center justify-center text-2xl mb-2 border border-indigo-900/30">❌⭕</div>
+            <div>
+                <h4 class="text-xs font-bold text-white">Tic Tac Toe</h4>
+                <p class="text-[9px] text-gray-500 mb-2">1.8K Playing</p>
+            </div>
+            <button class="lock-btn btn-gradient text-[10px] font-bold py-1.5 rounded-lg text-white w-full">Play Now</button>
+        </div>
+
+        <!-- Snake -->
+        <div class="neon-card p-2 rounded-xl neon-border text-center flex flex-col justify-between">
+            <div class="h-16 bg-indigo-950/40 rounded-lg flex items-center justify-center text-2xl mb-2 border border-indigo-900/30">🐍</div>
+            <div>
+                <h4 class="text-xs font-bold text-white">Snake</h4>
+                <p class="text-[9px] text-gray-500 mb-2">1.2K Playing</p>
+            </div>
+            <button class="lock-btn btn-gradient text-[10px] font-bold py-1.5 rounded-lg text-white w-full">Play Now</button>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-[#050612] border-t border-indigo-950 p-2 flex justify-around items-center z-50">
+        <div class="text-center text-indigo-400 cursor-pointer">
+            <i class="fa-solid fa-house text-sm"></i>
+            <p class="text-[9px] font-bold mt-0.5">Home</p>
+        </div>
+        <div class="lock-btn text-center text-gray-600 cursor-pointer">
+            <i class="fa-solid fa-gamepad text-sm"></i>
+            <p class="text-[9px] mt-0.5">Games</p>
+        </div>
+        <div class="lock-btn text-center text-gray-600 cursor-pointer">
+            <i class="fa-solid fa-trophy text-sm"></i>
+            <p class="text-[9px] mt-0.5">Rank</p>
+        </div>
+        <div class="lock-btn text-center text-gray-600 cursor-pointer">
+            <i class="fa-solid fa-user text-sm"></i>
+            <p class="text-[9px] mt-0.5">Profile</p>
+        </div>
+    </div>
+
+    <!-- Modal Popup for Lock -->
+    <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="neon-card p-5 rounded-2xl neon-border max-w-xs w-full text-center purple-glow border-indigo-500">
+            <div class="w-12 h-12 bg-indigo-950 rounded-full flex items-center justify-center text-2xl mx-auto mb-3 border border-indigo-500 text-indigo-400">🚀</div>
+            <h3 class="text-base font-bold text-white mb-1">SECRET NOVA</h3>
+            <p class="text-xs text-gray-400 mb-4">This feature is <span class="text-indigo-400 font-bold">Coming Soon!</span></p>
+            <button onclick="closeModal()" class="btn-gradient text-white text-xs font-bold px-6 py-2 rounded-xl w-full">OK</button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('modal');
+        document.querySelectorAll('.lock-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
         });
-    });
 
-    function closeModal() {
-        modal.style.display = 'none';
-    }
-</script>
-
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    </script>
 </body>
 </html>
+
 
