@@ -3,39 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secret Nova</title>
+    <title>Secret Nova Mini App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #050714; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .app-wrapper { position: relative; width: 100%; max-width: 420px; overflow: hidden; }
-        .bg-image { width: 100%; display: block; }
-        .click-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-box { background: #0d102b; border: 1px solid #7000ff; padding: 20px; border-radius: 16px; text-align: center; color: #fff; width: 80%; max-width: 280px; font-family: sans-serif; }
-        .modal-box h3 { color: #00d2ff; margin-bottom: 8px; }
-        .modal-box p { font-size: 14px; margin-bottom: 15px; color: #ccc; }
-        .close-btn { background: linear-gradient(90deg, #6366f1, #a855f7); color: #fff; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+        body { background-color: #050714; color: #fff; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
+        .glass-card { background: rgba(13, 16, 43, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(112, 0, 255, 0.2); }
+        .purple-glow { box-shadow: 0 0 15px rgba(112, 0, 255, 0.3); }
+        .gradient-btn { background: linear-gradient(90deg, #6366f1, #a855f7); }
+        .drawer { transition: transform 0.3s ease-in-out; }
     </style>
 </head>
-<body>
+<body class="p-3 max-w-[480px] mx-auto pb-20 relative min-h-screen">
 
-<div class="app-wrapper">
-    <img src="YOUR_IMAGE_URL_HERE" class="bg-image" alt="Secret Nova UI">
-    <div class="click-overlay" onclick="showModal()"></div>
-</div>
+    <!-- TOP BAR -->
+    <div class="glass-card p-3 rounded-2xl flex justify-between items-center mb-3 border-indigo-900/50">
+        <!-- Left: Menu + Profile -->
+        <div class="flex items-center gap-2">
+            <button onclick="toggleLeftDrawer()" class="text-xl text-indigo-400 p-1">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div onclick="toggleLeftDrawer()" class="flex items-center gap-2 cursor-pointer">
+                <div class="w-9 h-9 rounded-xl gradient-btn flex items-center justify-center font-black text-xs shadow-[0_0_10px_#6366f1]">SN</div>
+                <div>
+                    <h1 class="font-bold text-xs tracking-wide text-cyan-400">SECRET NOVA</h1>
+                    <p class="text-[9px] text-gray-400">@novax_gaming</p>
+                </div>
+            </div>
+        </div>
 
-<div class="modal" id="comingSoonModal">
-    <div class="modal-box">
-        <h3>SECRET NOVA</h3>
-        <p>This feature is <b>Coming Soon!</b> 🚀</p>
-        <button class="close-btn" onclick="hideModal()">OK</button>
+        <!-- Right: 3-Dot Menu -->
+        <div class="flex items-center gap-2">
+            <div class="bg-[#0e1330] px-2 py-1 rounded-full border border-indigo-900/50 text-[10px] flex items-center gap-1">
+                <span>🪙</span> <span class="font-bold">12.4K</span>
+            </div>
+            <button onclick="toggleRightDrawer()" class="text-xl text-indigo-400 p-1.5 rounded-lg bg-[#0e1330] border border-indigo-900/50">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+            </button>
+        </div>
     </div>
-</div>
 
-<script>
-    function showModal() { document.getElementById('comingSoonModal').style.display = 'flex'; }
-    function hideModal() { document.getElementById('comingSoonModal').style.display = 'none'; }
-</script>
+    <!-- MAIN BODY CONTENT -->
+    <!-- Daily Reward Card -->
+    <div class="glass-card purple-glow bg-gradient-to-r from-indigo-950 via-purple-950 to-indigo-950 p-4 rounded-2xl relative overflow-hidden mb-3">
+        <span class="text-[9px] uppercase font-bold text-indigo-300 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-700">Streak 07 Days</span>
+        <h2 class="text-base font-black mt-1">DAILY REWARD</h2>
+        <p class="text-[10px] text-indigo-200 mb-3">Login everyday and claim rewards!</p>
+        <a href="rewards.html" class="inline-block gradient-btn text-xs font-bold px-4 py-1.5 rounded-xl shadow-lg">Claim Now 🎁</a>
+        <div class="absolute right-2 bottom-1 text-5xl opacity-80">🎁</div>
+    </div>
 
+    <!-- Quick Action Icons -->
+    <div class="grid grid-cols-5 gap-1.5 mb-3 text-center">
+        <a href="bonus.html" class="glass-card p-2 rounded-xl">
+            <div class="text-base">🎁</div>
+            <p class="text-[9px] text-gray-400 mt-0.5">Bonus</p>
+        </a>
+        <a href="challenges.html" class="glass-card p-2 rounded-xl">
+            <div class="text-base">🎯</div>
+            <p class="text-[9px] text-gray-400 mt-0.5">Tasks</p>
+        </a>
+        <a href="spin.html" class="glass-card p-2 rounded-xl">
+            <div class="text-base">🎡</div>
+            <p class="text-[9px] text-gray-400 mt-0.5">Spin</p>
+        </a>
+        <a href="events.html" class="glass-card p-2 rounded-xl">
+            <div class="text-base">📅</div>
+            <p class="text-[9px] text-gray-400 mt-0.5">Events</p>
+        </a>
+        <a href="watch.html" class="glass-card p-2 rounded-xl">
+            <div class="text-base">🎬</div>
+            <p class="text-[9px] text-gray-400 mt-0.5">Watch</p>
+        </a>
+    </div>
+
+    <!-- Trending Games Section -->
+    <div class="flex justify-between items-center mb-2 px-1">
+        <h3 class="text-xs font-bold tracking-wider text-indigo-300">🔥 TRENDING GAMES</h3>
+        <a href="games.html" class="text-[10px] text-indigo-400">View All &gt;</a>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 mb-3">
+        <div class="glass-card p-2 rounded-xl text-center flex flex-col justify-between">
+            <div class="h-14 bg-indigo-950/50 rounded-lg flex items-center justify-center text-xl mb-1">🎲</div>
+            <h4 class="text-xs font-bold">Ludo</h4>
+            <p class="text-[8px] text-gray-400 mb-1.5">2.3K Playing</p>
+            <a href="ludo.html" class="gradient-btn text-[9px] font-bold py-1 rounded-lg w-full block">Play Now</a>
+        </div>
+        <div class="glass-card p-2 rounded-xl text-center flex flex-col justify-between">
+            <div class="h-14 bg-indigo-950/50 rounded-lg flex items-center justify-center text-xl mb-1">❌⭕</div>
+            <h4 class="text-xs font-bold">Tic Tac Toe</h4>
+            <p class="text-[8px] text-gray-400 mb-1.5">1.8K Playing</p>
+            <a href="tictactoe.html" class="gradient-btn text-[9px] font-bold py-1 rounded-lg w-full block">Play Now</a>
+        </div>
+        <div class="glass-card p-2 rounded-xl text-center flex flex-col justify-between">
+            <div class="h-14 bg-indigo-950/50 rounded-lg flex items-center justify-center text-xl mb-1">🐍</div>
+            <h4 class="text-xs font-bold">Snake</h4>
+            <p class="text-[8px] text-gray-400 mb-1.5">1.2K Playing</p>
+            <a href="snake.html" class="gradient-btn text-[9px] font-bold py-1 rounded-lg w-full block">Play Now</a>
+        </div>
+    </div>
+
+    <!-- LEFT SIDEBAR MENU (Profile Options) -->
+    <div id="leftDrawer" class="drawer fixed top-0 left-0 h-full w-64 glass-card z-50 transform -translate-x-full p-4 overflow-y-auto border-r border-indigo-500/30">
+        <div class="flex justify-between items-center mb-6 pb-2 border-b border-indigo-900/50">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg gradient-btn flex items-center justify-center font-bold text-xs">SN</div>
+                <span class="font-bold text-sm text-cyan-400">SECRET NOVA</span>
+            </div>
+            <button onclick="toggleLeftDrawer()" class="text-gray-400 text-lg">&times;</button>
+        </div>
+        <nav class="space-y-3 text-xs">
+            <a href="index.html" class="flex items-center gap-3 p-2 rounded-xl bg-indigo-950/50 text-indigo-300 font-bold"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="games.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-indigo-950/30 text-gray-300"><i class="fa-solid fa-gamepad"></i> Games</a>
+            <a href="challenges.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-indigo-950/30 text-gray-300"><i class="fa-solid fa-bullseye"></i> Challenges</a>
+            <a href="leaderboard.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-indigo-950/30 text-gray-300"><i class="fa-solid fa-trophy"></i> Leaderboard</a>
+            <a href="tournaments.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-indigo-950/30 text-gray-300"><i class="fa-solid fa-award"></i> Tournaments</a>
+            <a href="friends.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-indigo-950/30 text-gray-300"><i class="fa-solid fa-users"></i> Friends</a>
+            <a href="rewards.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-indigo-950/30 text-gray-300"><i class="fa-solid fa-gift"></i> Rewards</a>
+            <a href="store.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-indigo-950/30 text-gray-300"><i class="fa-solid fa-cart-shopping"></i> Store</a>
+            <a href="events.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-indigo-950/30 text-gray-300"><i class="fa-solid fa-calendar"></i> Events</a>
+            <a href="settings.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-indigo-950/30 text-gray-300"><i class="fa-solid fa-gear"></i> Settings</a>
+            <a href="help.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-indigo-950/30 text-gray-300"><i class="fa-solid fa-headset"></i> Help & Support</a>
+        </nav>
+    </div>
+
+    <!-- RIGHT SIDEBAR MENU (3-Dot Options) -->
+    <div id="rightDrawer" class="drawer fixed top-0 right-0 h-full w-72 glass-card z-50 transform translate-x-full p-4 overflow-y-auto border-l border-indigo-500/30">
+        <div class="flex justify-between items-center mb-4 pb-2 border-b border-indigo-900/50">
+            <h3 class="font-bold text-xs text-indigo-300 uppercase tracking-wider">Extra Widgets</h3>
+            <button onclick="toggleRightDrawer()" class="text-gray-400 text-lg">&times;</button>
+        </div>
+
+        <!-- Voice Chat Widget -->
+        <a href="vc.html" class="block glass-card p-3 rounded-xl mb-3 border-indigo-800/40">
+            <div class="flex justify-between items-center mb-1">
+                <span class="text-xs font-bold">VOICE CHAT</span>
+                <span class="text-[8px] bg-emerald-950 text-emerald-400 font-bold px-1.5 py-0.5 rounded">BETA</span>
+            </div>
+            <p class="text-[9px] text-gray-400 mb-2">Tap to enter voice room</p>
+            <div class="w-8 h-8 rounded-full gradient-btn flex items-center justify-center ml-auto">
+                <i class="fa-solid fa-microphone text-xs"></i>
+            </div>
+        </a>
+
+        <!-- Group Leaderboard -->
+        <a href="group-leaderboard.html" class="block glass-card p-3 rounded-xl mb-3">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-bold text-amber-400">🏆 GROUP LEADERBOARD</span>
+            </div>
+            <div class="text-[10px] space-y-1 text-gray-300">
+                <div class="flex justify-between"><span>1. Nova Squad</span><span>12,450 🪙</span></div>
+                <div class="flex justify-between"><span>2. Avengers</span><span>9,860 🪙</span></div>
+            </div>
+        </a>
+
+        <!-- Global Leaderboard -->
+        <a href="global-leaderboard.html" class="block glass-card p-3 rounded-xl mb-3">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-bold text-cyan-400">🌍 GLOBAL LEADERBOARD</span>
+            </div>
+            <div class="text-[10px] space-y-1 text-gray-300">
+                <div class="flex justify-between"><span>1. Shadow</span><span>125.6K 💎</span></div>
+                <div class="flex justify-between"><span>2. NovaX</span><span>98.4K 💎</span></div>
+            </div>
+        </a>
+
+        <!-- Lucky Spin -->
+        <a href="spin.html" class="block glass-card p-3 rounded-xl mb-3 text-center">
+            <span class="text-xs font-bold text-purple-400">🎡 LUCKY SPIN</span>
+            <p class="text-[9px] text-gray-400 mt-1">Spin & win rewards!</p>
+        </a>
+    </div>
+
+    <!-- BOTTOM FIXED NAV BAR -->
+    <div class="fixed bottom-0 left-0 right-0 bg-[#04050e] border-t border-indigo-950 p-2 flex justify-around items-center z-40 max-w-[480px] mx-auto">
+        <a href="index.html" class="text-center text-indigo-400">
+            <i class="fa-solid fa-house text-xs"></i>
+            <p class="text-[8px] font-bold mt-0.5">Home</p>
+        </a>
+        <a href="games.html" class="text-center text-gray-500">
+            <i class="fa-solid fa-gamepad text-xs"></i>
+            <p class="text-[8px] mt-0.5">Games</p>
+        </a>
+        <a href="rank.html" class="text-center text-gray-500">
+            <i class="fa-solid fa-trophy text-xs"></i>
+            <p class="text-[8px] mt-0.5">Rank</p>
+        </a>
+        <a href="profile.html" class="text-center text-gray-500">
+            <i class="fa-solid fa-user text-xs"></i>
+            <p class="text-[8px] mt-0.5">Profile</p>
+        </a>
+    </div>
+
+    <!-- OVERLAY -->
+    <div id="overlay" onclick="closeDrawers()" class="fixed inset-0 bg-black/60 z-40 hidden backdrop-blur-sm"></div>
+
+    <script>
+        const leftDrawer = document.getElementById('leftDrawer');
+        const rightDrawer = document.getElementById('rightDrawer');
+        const overlay = document.getElementById('overlay');
+
+        function toggleLeftDrawer() {
+            leftDrawer.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        function toggleRightDrawer() {
+            rightDrawer.classList.toggle('translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        function closeDrawers() {
+            leftDrawer.classList.add('-translate-x-full');
+            rightDrawer.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+        }
+    </script>
 </body>
-</html>
+                </html>
+
+            
